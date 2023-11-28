@@ -1,6 +1,5 @@
 package com.emirhanemmez.multistepsprogressbar
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -10,6 +9,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -75,29 +75,30 @@ fun StepItem(
     }
 }
 
-@Preview(name = "Dark Mode", uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+@Preview
 @Composable
 fun MultipleStepsProgressBarPreview() {
     MaterialTheme {
-        MultipleStepsProgressBar(
-            modifier = Modifier.fillMaxWidth(),
-            stepDataList = listOf(
-                StepData(
-                    stepId = StepId(0),
-                    stepName = "Step1",
-                    progress = StepProperties.PROGRESS_FULL
-                ),
-                StepData(
-                    stepId = StepId(1),
-                    stepName = "Step2",
-                    progress = StepProperties.PROGRESS_NONE
-                ),
-                StepData(
-                    stepId = StepId(2),
-                    stepName = "Step3",
-                    progress = StepProperties.PROGRESS_HALF
+        Surface {
+            MultipleStepsProgressBar(
+                stepDataList = listOf(
+                    StepData(
+                        stepId = StepId(0),
+                        stepName = "Step1",
+                        progress = StepProperties.PROGRESS_FULL
+                    ),
+                    StepData(
+                        stepId = StepId(1),
+                        stepName = "Step2",
+                        progress = StepProperties.PROGRESS_NONE,
+                    ),
+                    StepData(
+                        stepId = StepId(2),
+                        stepName = "Step3",
+                        progress = StepProperties.PROGRESS_HALF
+                    )
                 )
             )
-        )
+        }
     }
 }
