@@ -4,6 +4,43 @@ A customizable progressbar component can be used in onboarding screens for Jetpa
 
 ![MultiStepsProgressBar Preview](https://github.com/emirhanemmez/MultiStepsProgressBar/blob/main/screenshot/multistepsprogressbarpreview.png)
 
+## Implementation
+
+Add jitpack.io maven to **settings.gradle.kts**
+
+```
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        mavenLocal()
+        maven(url = "https://jitpack.io")
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenLocal()
+        maven(url = "https://jitpack.io")
+        mavenCentral()
+    }
+}
+```
+
+Add library dependency to your **build.gradle.kts**
+
+```
+implementation("com.github.emirhanemmez:MultiStepsProgressBar:version")
+```
+
 ## Usage
 
 Define your **stepList** as **SnapShotStateList**  in your ViewModel. For example:
