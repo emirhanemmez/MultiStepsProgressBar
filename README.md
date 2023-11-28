@@ -8,7 +8,7 @@ A customizable progressbar component can be used in onboarding screens for Jetpa
 
 Add jitpack.io maven to **settings.gradle.kts**
 
-```
+```gradle
 pluginManagement {
     repositories {
         google {
@@ -37,7 +37,7 @@ dependencyResolutionManagement {
 
 Add library dependency to your **build.gradle.kts**
 
-```
+```gradle
 implementation("com.github.emirhanemmez:MultiStepsProgressBar:version")
 ```
 
@@ -45,7 +45,7 @@ implementation("com.github.emirhanemmez:MultiStepsProgressBar:version")
 
 Define your **stepList** as **SnapShotStateList**  in your ViewModel. For example:
 
-```
+```kt
 class MainViewModel : ViewModel() {
 
     private val _stepList = mutableStateListOf<StepData>().apply {
@@ -87,7 +87,7 @@ class MainViewModel : ViewModel() {
 
 Observe **stepList** in your composable function:
 
-```
+```kt
 class MainActivity : ComponentActivity() {
 
     private lateinit var mainViewModel: MainViewModel
@@ -130,7 +130,7 @@ class MainActivity : ComponentActivity() {
 
 And update progress with this extension function:
 
-```
+```kt
 fun SnapshotStateList<StepData>.updateStepProgress(stepId: StepId, progress: Float) {
     val index = stepId.index
     val step = this[index]
