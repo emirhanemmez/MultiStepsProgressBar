@@ -1,5 +1,7 @@
 package com.emirhanemmez.multistepsprogressbar.model
 
+import androidx.compose.animation.core.AnimationSpec
+import androidx.compose.animation.core.spring
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -12,12 +14,15 @@ import com.emirhanemmez.multistepsprogressbar.defaultIndicatorHeight
 import com.emirhanemmez.multistepsprogressbar.defaultProgressBackgroundColor
 import com.emirhanemmez.multistepsprogressbar.defaultProgressColor
 
+private val defaultAnimation = spring<Float>()
+
 data class StepProperties(
     val progressProperties: ProgressProperties,
     val indicatorHeight: Dp,
     val textProperties: TextProperties,
     val marginBetweenSteps: Dp,
-    val marginBetweenTextAndProgress: Dp
+    val marginBetweenTextAndProgress: Dp,
+    val animationSpec: AnimationSpec<Float> = defaultAnimation
 ) {
     companion object {
         @Composable

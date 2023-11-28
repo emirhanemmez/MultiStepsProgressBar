@@ -1,5 +1,6 @@
 package com.emirhanemmez.multistepsprogressbar
 
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
@@ -52,13 +54,19 @@ fun StepItem(
     stepData: StepData,
     stepProperties: StepProperties,
 ) {
+    val progressAnimatedValue by animateFloatAsState(
+        targetValue = stepData.progress,
+        animationSpec = stepProperties.animationSpec,
+        label = stepData.stepName
+    )
+
     Column(modifier = modifier) {
         LinearProgressIndicator(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(stepProperties.progressProperties.progressCornerRadius))
                 .height(5.dp),
-            progress = stepData.progress,
+            progress = progressAnimatedValue,
             trackColor = stepProperties.progressProperties.progressBackgroundColor,
             color = stepProperties.progressProperties.progressColor
         )
