@@ -37,7 +37,7 @@ dependencyResolutionManagement {
 
 Add library dependency to your **build.gradle.kts**
 
-```kt
+```gradle
 implementation("com.github.emirhanemmez:MultiStepsProgressBar:version")
 ```
 
