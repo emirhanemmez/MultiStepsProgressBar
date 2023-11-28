@@ -1,5 +1,7 @@
 package com.emirhanemmez.multistepsprogressbar.model
 
+import androidx.compose.animation.core.AnimationSpec
+import androidx.compose.animation.core.spring
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -17,7 +19,8 @@ data class StepProperties(
     val indicatorHeight: Dp,
     val textProperties: TextProperties,
     val marginBetweenSteps: Dp,
-    val marginBetweenTextAndProgress: Dp
+    val marginBetweenTextAndProgress: Dp,
+    val animationSpec: AnimationSpec<Float>
 ) {
     companion object {
         @Composable
@@ -34,7 +37,8 @@ data class StepProperties(
                 inActiveTextColor = defaultInactiveTextColor,
             ),
             marginBetweenSteps = 16.dp,
-            marginBetweenTextAndProgress = 8.dp
+            marginBetweenTextAndProgress = 8.dp,
+            animationSpec = spring()
         )
     }
 }
