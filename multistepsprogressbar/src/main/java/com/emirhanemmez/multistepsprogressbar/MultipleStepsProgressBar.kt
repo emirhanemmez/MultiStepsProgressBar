@@ -16,18 +16,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.emirhanemmez.multistepsprogressbar.model.ProgressProperties
 import com.emirhanemmez.multistepsprogressbar.model.StepData
 import com.emirhanemmez.multistepsprogressbar.model.StepId
 import com.emirhanemmez.multistepsprogressbar.model.StepProperties
+import com.emirhanemmez.multistepsprogressbar.model.TextProperties
 
 @Composable
 fun MultipleStepsProgressBar(
     modifier: Modifier = Modifier,
     stepDataList: List<StepData>,
-    stepProperties: StepProperties = StepProperties.getDefault()
+    stepProperties: StepProperties = StepProperties(textProperties = TextProperties.default())
 ) {
     Row(
         modifier = modifier
@@ -74,12 +76,14 @@ fun StepItem(
         Spacer(modifier = Modifier.height(stepProperties.marginBetweenTextAndProgress))
 
         Text(
+            modifier = Modifier.fillMaxWidth(),
             text = stepData.stepName,
             style = stepProperties.textProperties.textStyle,
             color = if (stepData.progress == 0f)
                 stepProperties.textProperties.inActiveTextColor
             else
-                stepProperties.textProperties.activeTextColor
+                stepProperties.textProperties.activeTextColor,
+            textAlign = stepProperties.textProperties.textAlign
         )
     }
 }
@@ -90,6 +94,9 @@ fun MultipleStepsProgressBarPreview() {
     MaterialTheme {
         Surface {
             MultipleStepsProgressBar(
+                stepProperties = StepProperties(
+                    textProperties = TextProperties.default().copy(textAlign = TextAlign.Center)
+                ),
                 stepDataList = listOf(
                     StepData(
                         stepId = StepId(0),
