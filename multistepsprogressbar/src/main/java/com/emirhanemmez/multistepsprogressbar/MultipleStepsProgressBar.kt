@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.emirhanemmez.multistepsprogressbar.model.ProgressProperties
 import com.emirhanemmez.multistepsprogressbar.model.StepData
 import com.emirhanemmez.multistepsprogressbar.model.StepId
 import com.emirhanemmez.multistepsprogressbar.model.StepProperties
@@ -55,11 +56,11 @@ fun StepItem(
         LinearProgressIndicator(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(stepProperties.progressCornerRadius))
+                .clip(RoundedCornerShape(stepProperties.progressProperties.progressCornerRadius))
                 .height(5.dp),
             progress = stepData.progress,
-            trackColor = stepProperties.progressBackgroundColor,
-            color = stepProperties.progressColor
+            trackColor = stepProperties.progressProperties.progressBackgroundColor,
+            color = stepProperties.progressProperties.progressColor
         )
 
         Spacer(modifier = Modifier.height(stepProperties.marginBetweenTextAndProgress))
@@ -85,17 +86,17 @@ fun MultipleStepsProgressBarPreview() {
                     StepData(
                         stepId = StepId(0),
                         stepName = "Step1",
-                        progress = StepProperties.PROGRESS_FULL
+                        progress = ProgressProperties.PROGRESS_FULL
                     ),
                     StepData(
                         stepId = StepId(1),
                         stepName = "Step2",
-                        progress = StepProperties.PROGRESS_NONE,
+                        progress = ProgressProperties.PROGRESS_NONE,
                     ),
                     StepData(
                         stepId = StepId(2),
                         stepName = "Step3",
-                        progress = StepProperties.PROGRESS_HALF
+                        progress = ProgressProperties.PROGRESS_HALF
                     )
                 )
             )
