@@ -14,15 +14,13 @@ import com.emirhanemmez.multistepsprogressbar.defaultIndicatorHeight
 import com.emirhanemmez.multistepsprogressbar.defaultProgressBackgroundColor
 import com.emirhanemmez.multistepsprogressbar.defaultProgressColor
 
-private val defaultAnimation = spring<Float>()
-
 data class StepProperties(
     val progressProperties: ProgressProperties,
     val indicatorHeight: Dp,
     val textProperties: TextProperties,
     val marginBetweenSteps: Dp,
     val marginBetweenTextAndProgress: Dp,
-    val animationSpec: AnimationSpec<Float> = defaultAnimation
+    val animationSpec: AnimationSpec<Float>
 ) {
     companion object {
         @Composable
@@ -39,7 +37,8 @@ data class StepProperties(
                 inActiveTextColor = defaultInactiveTextColor,
             ),
             marginBetweenSteps = 16.dp,
-            marginBetweenTextAndProgress = 8.dp
+            marginBetweenTextAndProgress = 8.dp,
+            animationSpec = spring()
         )
     }
 }
