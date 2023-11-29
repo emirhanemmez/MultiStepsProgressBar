@@ -2,7 +2,7 @@
 
 A customizable progressbar component can be used in onboarding screens for Jetpack Compose.
 
-![MultiStepsProgressBar Preview](https://github.com/emirhanemmez/MultiStepsProgressBar/blob/main/screenshot/multistepsprogressbarpreview.png)
+![MultiStepsProgressBar](https://github.com/emirhanemmez/MultiStepsProgressBar/blob/main/screenshot/animation.gif)
 
 ## Implementation
 
